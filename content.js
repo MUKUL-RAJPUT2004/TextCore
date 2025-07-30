@@ -1,5 +1,5 @@
 function getArticleContent() {
-    const article = document.querySelector("article");
+     const article = window.getSelection().toString().trim();
     if(article) {
         return article.innerText;
     }
@@ -11,7 +11,12 @@ function getArticleContent() {
 chrome.runtime.onMessage.addListener((req, _sender, sendResponse) =>{
     if(req.type === "GET_ARTICLE_TEXT"){
         const text = getArticleContent();
-        sendResponse({text});
+         if (article) {
+      sendResponse({ text: selectedText });
+    } else {
+      
+      sendResponse({ error: "No text selected. Please highlight the text you want to summarize." });
+    }
     }
     return true; // Keep the message channel open for async response
 });

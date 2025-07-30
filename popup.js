@@ -17,7 +17,7 @@ document.getElementById("summarize").addEventListener("click", async () => {
                 { type: "GET_ARTICLE_TEXT" },
                 async (response) => {
                     if(!response || !response.text) {
-                        resultDiv.textContent = "No article text found.";
+                        resultDiv.textContent = "No text found.";
                         return;
                     }
 
@@ -34,10 +34,7 @@ document.getElementById("summarize").addEventListener("click", async () => {
     });
 });
 
-async function getGeminiSummary(rawText, type, apiKey){
-    const max = 20000;
-    const text = rawText.length > max ? rawText.slice(0, max) + "..." : rawText;
-
+async function getGeminiSummary(text, type, apiKey){
      const promptMap = {
         brief: `Summarise in 2-3 sentences: \n\n${text}`,
         detailed: `Provide a detailed summary of the following text:\n\n${text}`,

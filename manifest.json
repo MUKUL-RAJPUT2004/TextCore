@@ -1,11 +1,12 @@
 {
     "manifest_version": 3,
-    "name": "Ai Article Summariser",
+    "name": "AI Article Summariser",
     "version": "1.0",
+    "description": "Summarize articles and web content instantly with AI. Choose between Brief, Detailed, or Bullet-point summaries.",
 
 
     "permissions": [
-        "scripting",
+        "tabs",
         "activeTab",
         "storage"
     ],
